@@ -1,12 +1,16 @@
 import os
 import shutil
 
-home = os.path.expanduser("~")
-os.chdir(home)
+if os.getuid() != 0:
+	print("Run as administator")
+	quit()
+
+root = os.path.expanduser("/")
+os.chdir(root)
 
 docs = []
 
-for path, subdirs, files in os.walk(home):
+for path, subdirs, files in os.walk(root):
 	for file in files:
 		docs.append(os.path.join(path, file))
 
