@@ -5,7 +5,7 @@ if os.getuid() != 0:
 	print("Run as administator")
 	quit()
 
-root = os.path.expanduser("/home/munseer/Demo")
+root = os.path.expanduser("/")
 os.chdir(root)
 
 files = []
